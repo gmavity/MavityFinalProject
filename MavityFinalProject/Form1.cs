@@ -12,6 +12,8 @@ namespace MavityFinalProject
 {
     public partial class frmMain : Form
     {
+
+
         public frmMain()
         {
             InitializeComponent();
@@ -111,6 +113,27 @@ namespace MavityFinalProject
             {
                 e.Handled = true;
             }
+        }
+
+        /// <summary>
+        /// Adds a person
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddPerson_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Brings up a form with a description of the program's functionalities
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Form2 aboutForm = new Form2();
+            aboutForm.Show();
         }
     }
 }

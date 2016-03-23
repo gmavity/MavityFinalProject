@@ -75,6 +75,7 @@
             this.lblDescibe = new System.Windows.Forms.Label();
             this.btnAssign = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.grpGender.SuspendLayout();
             this.grpWake.SuspendLayout();
             this.grpBed.SuspendLayout();
@@ -459,6 +460,7 @@
             this.btnAddPerson.TabIndex = 13;
             this.btnAddPerson.Text = "Add Person";
             this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // btnChangeRecord
             // 
@@ -480,10 +482,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(341, 378);
+            this.btnExit.Location = new System.Drawing.Point(423, 378);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 60);
-            this.btnExit.TabIndex = 17;
+            this.btnExit.TabIndex = 18;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
@@ -536,11 +538,22 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(87, 20);
             this.maskedTextBox1.TabIndex = 3;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(342, 378);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(75, 60);
+            this.btnHelp.TabIndex = 17;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 467);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.lblDescibe);
@@ -575,7 +588,7 @@
             this.Controls.Add(this.lstDisplay);
             this.Controls.Add(this.lblName);
             this.Name = "frmMain";
-            this.Text = "1";
+            this.Text = "Roommate Selection";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.grpGender.ResumeLayout(false);
             this.grpGender.PerformLayout();
@@ -639,6 +652,7 @@
         private System.Windows.Forms.Label lblDescibe;
         private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Button btnHelp;
     }
 }
 
