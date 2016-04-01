@@ -1,6 +1,6 @@
 ﻿namespace MavityFinalProject
 {
-    partial class frmMain
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
-            this.lstDisplay = new System.Windows.Forms.ListBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblSSN = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -74,12 +74,35 @@
             this.rtbDescribe = new System.Windows.Forms.RichTextBox();
             this.lblDescibe = new System.Windows.Forms.Label();
             this.btnAssign = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.dgvPersonViewer = new System.Windows.Forms.DataGridView();
+            this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet1 = new MavityFinalProject.PeopleDataSet1();
+            this.peopleDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet = new MavityFinalProject.PeopleDataSet();
+            this.informationTableAdapter = new MavityFinalProject.PeopleDataSet1TableAdapters.InformationTableAdapter();
+            this.sSNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cleanlinessDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quietnessDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studiousnessDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guestsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.majorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wakeupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bedtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpGender.SuspendLayout();
             this.grpWake.SuspendLayout();
             this.grpBed.SuspendLayout();
             this.strpStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonViewer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -91,17 +114,8 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
-            // lstDisplay
-            // 
-            this.lstDisplay.FormattingEnabled = true;
-            this.lstDisplay.Location = new System.Drawing.Point(651, 12);
-            this.lstDisplay.Name = "lstDisplay";
-            this.lstDisplay.Size = new System.Drawing.Size(500, 420);
-            this.lstDisplay.TabIndex = 1;
-            // 
             // txtName
             // 
-            this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(54, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
@@ -185,7 +199,6 @@
             this.grpGender.Controls.Add(this.radM);
             this.grpGender.Controls.Add(this.radMale);
             this.grpGender.Controls.Add(this.radF);
-            this.grpGender.Enabled = false;
             this.grpGender.Location = new System.Drawing.Point(60, 53);
             this.grpGender.Name = "grpGender";
             this.grpGender.Size = new System.Drawing.Size(81, 26);
@@ -254,7 +267,6 @@
             // 
             // txtSSN
             // 
-            this.txtSSN.Enabled = false;
             this.txtSSN.Location = new System.Drawing.Point(121, 30);
             this.txtSSN.Name = "txtSSN";
             this.txtSSN.Size = new System.Drawing.Size(51, 20);
@@ -263,7 +275,6 @@
             // 
             // txtClean
             // 
-            this.txtClean.Enabled = false;
             this.txtClean.Location = new System.Drawing.Point(101, 100);
             this.txtClean.Name = "txtClean";
             this.txtClean.Size = new System.Drawing.Size(25, 20);
@@ -272,7 +283,6 @@
             // 
             // txtQuiet
             // 
-            this.txtQuiet.Enabled = false;
             this.txtQuiet.Location = new System.Drawing.Point(101, 126);
             this.txtQuiet.Name = "txtQuiet";
             this.txtQuiet.Size = new System.Drawing.Size(25, 20);
@@ -281,7 +291,6 @@
             // 
             // txtStudy
             // 
-            this.txtStudy.Enabled = false;
             this.txtStudy.Location = new System.Drawing.Point(119, 150);
             this.txtStudy.Name = "txtStudy";
             this.txtStudy.Size = new System.Drawing.Size(25, 20);
@@ -290,7 +299,6 @@
             // 
             // txtGuests
             // 
-            this.txtGuests.Enabled = false;
             this.txtGuests.Location = new System.Drawing.Point(186, 176);
             this.txtGuests.Name = "txtGuests";
             this.txtGuests.Size = new System.Drawing.Size(25, 20);
@@ -299,7 +307,6 @@
             // 
             // txtYear
             // 
-            this.txtYear.Enabled = false;
             this.txtYear.Location = new System.Drawing.Point(164, 202);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(97, 20);
@@ -308,7 +315,6 @@
             // 
             // txtMajor
             // 
-            this.txtMajor.Enabled = false;
             this.txtMajor.Location = new System.Drawing.Point(51, 229);
             this.txtMajor.Name = "txtMajor";
             this.txtMajor.Size = new System.Drawing.Size(100, 20);
@@ -321,7 +327,6 @@
             this.grpWake.Controls.Add(this.rad7to8);
             this.grpWake.Controls.Add(this.rad6to7);
             this.grpWake.Controls.Add(this.radBefore6);
-            this.grpWake.Enabled = false;
             this.grpWake.Location = new System.Drawing.Point(97, 255);
             this.grpWake.Name = "grpWake";
             this.grpWake.Size = new System.Drawing.Size(185, 55);
@@ -390,7 +395,6 @@
             this.grpBed.Controls.Add(this.rad11to12);
             this.grpBed.Controls.Add(this.rad10to11);
             this.grpBed.Controls.Add(this.radBefore10);
-            this.grpBed.Enabled = false;
             this.grpBed.Location = new System.Drawing.Point(60, 323);
             this.grpBed.Name = "grpBed";
             this.grpBed.Size = new System.Drawing.Size(213, 55);
@@ -495,7 +499,7 @@
             this.lblStatus});
             this.strpStatus.Location = new System.Drawing.Point(0, 445);
             this.strpStatus.Name = "strpStatus";
-            this.strpStatus.Size = new System.Drawing.Size(1214, 22);
+            this.strpStatus.Size = new System.Drawing.Size(1342, 22);
             this.strpStatus.TabIndex = 32;
             this.strpStatus.Text = "statusStrip1";
             // 
@@ -508,7 +512,7 @@
             // 
             this.rtbDescribe.Location = new System.Drawing.Point(260, 37);
             this.rtbDescribe.Name = "rtbDescribe";
-            this.rtbDescribe.Size = new System.Drawing.Size(345, 105);
+            this.rtbDescribe.Size = new System.Drawing.Size(238, 159);
             this.rtbDescribe.TabIndex = 12;
             this.rtbDescribe.Text = "";
             // 
@@ -530,13 +534,13 @@
             this.btnAssign.Text = "Choose For Me";
             this.btnAssign.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // txtPhone
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(95, 79);
-            this.maskedTextBox1.Mask = "(999) 000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(87, 20);
-            this.maskedTextBox1.TabIndex = 3;
+            this.txtPhone.Location = new System.Drawing.Point(95, 79);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(87, 20);
+            this.txtPhone.TabIndex = 3;
             // 
             // btnHelp
             // 
@@ -548,13 +552,158 @@
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // frmMain
+            // dgvPersonViewer
+            // 
+            this.dgvPersonViewer.AllowUserToAddRows = false;
+            this.dgvPersonViewer.AllowUserToDeleteRows = false;
+            this.dgvPersonViewer.AutoGenerateColumns = false;
+            this.dgvPersonViewer.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvPersonViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sSNDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.cleanlinessDataGridViewTextBoxColumn,
+            this.quietnessDataGridViewTextBoxColumn,
+            this.studiousnessDataGridViewTextBoxColumn,
+            this.guestsDataGridViewTextBoxColumn,
+            this.gradeDataGridViewTextBoxColumn,
+            this.majorDataGridViewTextBoxColumn,
+            this.wakeupDataGridViewTextBoxColumn,
+            this.bedtimeDataGridViewTextBoxColumn});
+            this.dgvPersonViewer.DataSource = this.informationBindingSource;
+            this.dgvPersonViewer.Location = new System.Drawing.Point(504, 12);
+            this.dgvPersonViewer.Name = "dgvPersonViewer";
+            this.dgvPersonViewer.Size = new System.Drawing.Size(834, 396);
+            this.dgvPersonViewer.TabIndex = 35;
+            // 
+            // informationBindingSource
+            // 
+            this.informationBindingSource.DataMember = "Information";
+            this.informationBindingSource.DataSource = this.peopleDataSet1;
+            // 
+            // peopleDataSet1
+            // 
+            this.peopleDataSet1.DataSetName = "PeopleDataSet1";
+            this.peopleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // peopleDataSetBindingSource
+            // 
+            this.peopleDataSetBindingSource.DataSource = this.peopleDataSet;
+            this.peopleDataSetBindingSource.Position = 0;
+            // 
+            // peopleDataSet
+            // 
+            this.peopleDataSet.DataSetName = "PeopleDataSet";
+            this.peopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // informationTableAdapter
+            // 
+            this.informationTableAdapter.ClearBeforeFill = true;
+            // 
+            // sSNDataGridViewTextBoxColumn
+            // 
+            this.sSNDataGridViewTextBoxColumn.DataPropertyName = "SSN";
+            this.sSNDataGridViewTextBoxColumn.HeaderText = "SSN";
+            this.sSNDataGridViewTextBoxColumn.Name = "sSNDataGridViewTextBoxColumn";
+            this.sSNDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sSNDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
+            this.genderDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.phoneDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // cleanlinessDataGridViewTextBoxColumn
+            // 
+            this.cleanlinessDataGridViewTextBoxColumn.DataPropertyName = "Cleanliness";
+            this.cleanlinessDataGridViewTextBoxColumn.HeaderText = "Cleanliness";
+            this.cleanlinessDataGridViewTextBoxColumn.Name = "cleanlinessDataGridViewTextBoxColumn";
+            this.cleanlinessDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cleanlinessDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // quietnessDataGridViewTextBoxColumn
+            // 
+            this.quietnessDataGridViewTextBoxColumn.DataPropertyName = "Quietness";
+            this.quietnessDataGridViewTextBoxColumn.HeaderText = "Quietness";
+            this.quietnessDataGridViewTextBoxColumn.Name = "quietnessDataGridViewTextBoxColumn";
+            this.quietnessDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quietnessDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // studiousnessDataGridViewTextBoxColumn
+            // 
+            this.studiousnessDataGridViewTextBoxColumn.DataPropertyName = "Studiousness";
+            this.studiousnessDataGridViewTextBoxColumn.HeaderText = "Studiousness";
+            this.studiousnessDataGridViewTextBoxColumn.Name = "studiousnessDataGridViewTextBoxColumn";
+            this.studiousnessDataGridViewTextBoxColumn.ReadOnly = true;
+            this.studiousnessDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // guestsDataGridViewTextBoxColumn
+            // 
+            this.guestsDataGridViewTextBoxColumn.DataPropertyName = "Guests";
+            this.guestsDataGridViewTextBoxColumn.HeaderText = "Guests";
+            this.guestsDataGridViewTextBoxColumn.Name = "guestsDataGridViewTextBoxColumn";
+            this.guestsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.guestsDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // gradeDataGridViewTextBoxColumn
+            // 
+            this.gradeDataGridViewTextBoxColumn.DataPropertyName = "Grade";
+            this.gradeDataGridViewTextBoxColumn.HeaderText = "Grade";
+            this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
+            this.gradeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.gradeDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // majorDataGridViewTextBoxColumn
+            // 
+            this.majorDataGridViewTextBoxColumn.DataPropertyName = "Major";
+            this.majorDataGridViewTextBoxColumn.HeaderText = "Major";
+            this.majorDataGridViewTextBoxColumn.Name = "majorDataGridViewTextBoxColumn";
+            this.majorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wakeupDataGridViewTextBoxColumn
+            // 
+            this.wakeupDataGridViewTextBoxColumn.DataPropertyName = "Wake-up";
+            this.wakeupDataGridViewTextBoxColumn.HeaderText = "Wake-up";
+            this.wakeupDataGridViewTextBoxColumn.Name = "wakeupDataGridViewTextBoxColumn";
+            this.wakeupDataGridViewTextBoxColumn.ReadOnly = true;
+            this.wakeupDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // bedtimeDataGridViewTextBoxColumn
+            // 
+            this.bedtimeDataGridViewTextBoxColumn.DataPropertyName = "Bedtime";
+            this.bedtimeDataGridViewTextBoxColumn.HeaderText = "Bedtime";
+            this.bedtimeDataGridViewTextBoxColumn.Name = "bedtimeDataGridViewTextBoxColumn";
+            this.bedtimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bedtimeDataGridViewTextBoxColumn.Width = 65;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 467);
+            this.ClientSize = new System.Drawing.Size(1342, 467);
+            this.Controls.Add(this.dgvPersonViewer);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.lblDescibe);
             this.Controls.Add(this.rtbDescribe);
@@ -585,9 +734,8 @@
             this.Controls.Add(this.lblPhone);
             this.Controls.Add(this.lblSSN);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lstDisplay);
             this.Controls.Add(this.lblName);
-            this.Name = "frmMain";
+            this.Name = "MainForm";
             this.Text = "Roommate Selection";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.grpGender.ResumeLayout(false);
@@ -598,6 +746,11 @@
             this.grpBed.PerformLayout();
             this.strpStatus.ResumeLayout(false);
             this.strpStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonViewer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,7 +759,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.ListBox lstDisplay;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblSSN;
         private System.Windows.Forms.Label lblPhone;
@@ -651,8 +803,26 @@
         private System.Windows.Forms.RichTextBox rtbDescribe;
         private System.Windows.Forms.Label lblDescibe;
         private System.Windows.Forms.Button btnAssign;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.DataGridView dgvPersonViewer;
+        private System.Windows.Forms.BindingSource peopleDataSetBindingSource;
+        private PeopleDataSet peopleDataSet;
+        private PeopleDataSet1 peopleDataSet1;
+        private System.Windows.Forms.BindingSource informationBindingSource;
+        private PeopleDataSet1TableAdapters.InformationTableAdapter informationTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sSNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cleanlinessDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quietnessDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studiousnessDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn guestsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn majorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wakeupDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bedtimeDataGridViewTextBoxColumn;
     }
 }
 

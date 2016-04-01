@@ -119,7 +119,7 @@
   </resheader>
   <data name="txtAbout.Text" xml:space="preserve">
     <value>This program allows you to browse potential roommates in the database. 
-You can input the personal information (your SSN will NEVER be shown to anyone, and is just an indentification!) and create your profile. Then, you can choose from the potential roommates on the list, and email the person of your choice. 
+You can input the personal information (your SSN will NEVER be shown to anyone, and is just an indentification!) and create your profile. Then, you can choose from the potential roommates on the list, and call the person of your choice. 
 At any time, you can change your profile, or remove yourself from the list. Just input your SSN to prove who you are. 
 You can also have the software pick you a roommate that might be suitable. The algorithm will do its best to choose the perfect person, but there are no promises made! 
 

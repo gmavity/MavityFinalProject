@@ -1,6 +1,6 @@
 ﻿namespace MavityFinalProject
 {
-    partial class Form2
+    partial class AboutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.txtAbout = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -47,13 +47,13 @@
             this.txtAbout.TabStop = false;
             this.txtAbout.Text = resources.GetString("txtAbout.Text");
             // 
-            // Form2
+            // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 297);
             this.Controls.Add(this.txtAbout);
-            this.Name = "Form2";
+            this.Name = "AboutForm";
             this.Text = "About";
             this.ResumeLayout(false);
             this.PerformLayout();
