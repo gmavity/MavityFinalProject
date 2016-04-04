@@ -77,11 +77,18 @@
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.btnHelp = new System.Windows.Forms.Button();
             this.dgvPersonViewer = new System.Windows.Forms.DataGridView();
-            this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet1 = new MavityFinalProject.PeopleDataSet1();
+            this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet2 = new MavityFinalProject.PeopleDataSet2();
             this.peopleDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.peopleDataSet = new MavityFinalProject.PeopleDataSet();
+            this.btnDescription = new System.Windows.Forms.Button();
+            this.informationTableAdapter1 = new MavityFinalProject.PeopleDataSet2TableAdapters.InformationTableAdapter();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet1 = new MavityFinalProject.PeopleDataSet1();
             this.informationTableAdapter = new MavityFinalProject.PeopleDataSet1TableAdapters.InformationTableAdapter();
+            this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sSNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,17 +99,21 @@
             this.guestsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wakeupDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Wakeup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpGender.SuspendLayout();
             this.grpWake.SuspendLayout();
             this.grpBed.SuspendLayout();
             this.strpStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonViewer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -460,7 +471,7 @@
             // 
             this.btnAddPerson.Location = new System.Drawing.Point(15, 378);
             this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(75, 60);
+            this.btnAddPerson.Size = new System.Drawing.Size(60, 60);
             this.btnAddPerson.TabIndex = 13;
             this.btnAddPerson.Text = "Add Person";
             this.btnAddPerson.UseVisualStyleBackColor = true;
@@ -468,30 +479,33 @@
             // 
             // btnChangeRecord
             // 
-            this.btnChangeRecord.Location = new System.Drawing.Point(97, 378);
+            this.btnChangeRecord.Location = new System.Drawing.Point(81, 378);
             this.btnChangeRecord.Name = "btnChangeRecord";
-            this.btnChangeRecord.Size = new System.Drawing.Size(75, 60);
+            this.btnChangeRecord.Size = new System.Drawing.Size(60, 60);
             this.btnChangeRecord.TabIndex = 14;
             this.btnChangeRecord.Text = "Change Record";
             this.btnChangeRecord.UseVisualStyleBackColor = true;
+            this.btnChangeRecord.Click += new System.EventHandler(this.btnChangeRecord_Click);
             // 
             // btnRemoveRecord
             // 
-            this.btnRemoveRecord.Location = new System.Drawing.Point(178, 378);
+            this.btnRemoveRecord.Location = new System.Drawing.Point(213, 378);
             this.btnRemoveRecord.Name = "btnRemoveRecord";
-            this.btnRemoveRecord.Size = new System.Drawing.Size(75, 60);
+            this.btnRemoveRecord.Size = new System.Drawing.Size(60, 60);
             this.btnRemoveRecord.TabIndex = 15;
             this.btnRemoveRecord.Text = "Remove Record";
             this.btnRemoveRecord.UseVisualStyleBackColor = true;
+            this.btnRemoveRecord.Click += new System.EventHandler(this.btnRemoveRecord_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(423, 378);
+            this.btnExit.Location = new System.Drawing.Point(438, 378);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 60);
+            this.btnExit.Size = new System.Drawing.Size(60, 60);
             this.btnExit.TabIndex = 18;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // strpStatus
             // 
@@ -499,7 +513,7 @@
             this.lblStatus});
             this.strpStatus.Location = new System.Drawing.Point(0, 445);
             this.strpStatus.Name = "strpStatus";
-            this.strpStatus.Size = new System.Drawing.Size(1342, 22);
+            this.strpStatus.Size = new System.Drawing.Size(1414, 22);
             this.strpStatus.TabIndex = 32;
             this.strpStatus.Text = "statusStrip1";
             // 
@@ -527,9 +541,9 @@
             // 
             // btnAssign
             // 
-            this.btnAssign.Location = new System.Drawing.Point(260, 378);
+            this.btnAssign.Location = new System.Drawing.Point(306, 378);
             this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(75, 60);
+            this.btnAssign.Size = new System.Drawing.Size(60, 60);
             this.btnAssign.TabIndex = 16;
             this.btnAssign.Text = "Choose For Me";
             this.btnAssign.UseVisualStyleBackColor = true;
@@ -544,9 +558,9 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Location = new System.Drawing.Point(342, 378);
+            this.btnHelp.Location = new System.Drawing.Point(372, 378);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(75, 60);
+            this.btnHelp.Size = new System.Drawing.Size(60, 60);
             this.btnHelp.TabIndex = 17;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -560,6 +574,7 @@
             this.dgvPersonViewer.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvPersonViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonViewer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Description,
             this.sSNDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.genderDataGridViewTextBoxColumn,
@@ -570,23 +585,25 @@
             this.guestsDataGridViewTextBoxColumn,
             this.gradeDataGridViewTextBoxColumn,
             this.majorDataGridViewTextBoxColumn,
-            this.wakeupDataGridViewTextBoxColumn,
-            this.bedtimeDataGridViewTextBoxColumn});
-            this.dgvPersonViewer.DataSource = this.informationBindingSource;
-            this.dgvPersonViewer.Location = new System.Drawing.Point(504, 12);
+            this.Wakeup,
+            this.bedtimeDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
+            this.dgvPersonViewer.DataSource = this.informationBindingSource2;
+            this.dgvPersonViewer.Location = new System.Drawing.Point(508, 12);
             this.dgvPersonViewer.Name = "dgvPersonViewer";
-            this.dgvPersonViewer.Size = new System.Drawing.Size(834, 396);
+            this.dgvPersonViewer.ReadOnly = true;
+            this.dgvPersonViewer.Size = new System.Drawing.Size(796, 396);
             this.dgvPersonViewer.TabIndex = 35;
             // 
-            // informationBindingSource
+            // informationBindingSource2
             // 
-            this.informationBindingSource.DataMember = "Information";
-            this.informationBindingSource.DataSource = this.peopleDataSet1;
+            this.informationBindingSource2.DataMember = "Information";
+            this.informationBindingSource2.DataSource = this.peopleDataSet2;
             // 
-            // peopleDataSet1
+            // peopleDataSet2
             // 
-            this.peopleDataSet1.DataSetName = "PeopleDataSet1";
-            this.peopleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
+            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // peopleDataSetBindingSource
             // 
@@ -598,9 +615,56 @@
             this.peopleDataSet.DataSetName = "PeopleDataSet";
             this.peopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // btnDescription
+            // 
+            this.btnDescription.Location = new System.Drawing.Point(1310, 157);
+            this.btnDescription.Name = "btnDescription";
+            this.btnDescription.Size = new System.Drawing.Size(75, 60);
+            this.btnDescription.TabIndex = 36;
+            this.btnDescription.Text = "Get Description";
+            this.btnDescription.UseVisualStyleBackColor = true;
+            this.btnDescription.Click += new System.EventHandler(this.btnDescription_Click);
+            // 
+            // informationTableAdapter1
+            // 
+            this.informationTableAdapter1.ClearBeforeFill = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(147, 378);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(60, 60);
+            this.btnSave.TabIndex = 37;
+            this.btnSave.Text = "Save Changes";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // informationBindingSource
+            // 
+            this.informationBindingSource.DataMember = "Information";
+            this.informationBindingSource.DataSource = this.peopleDataSet1;
+            // 
+            // peopleDataSet1
+            // 
+            this.peopleDataSet1.DataSetName = "PeopleDataSet1";
+            this.peopleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // informationTableAdapter
             // 
             this.informationTableAdapter.ClearBeforeFill = true;
+            // 
+            // informationBindingSource1
+            // 
+            this.informationBindingSource1.DataMember = "Information";
+            this.informationBindingSource1.DataSource = this.peopleDataSet1;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Visible = false;
             // 
             // sSNDataGridViewTextBoxColumn
             // 
@@ -623,7 +687,7 @@
             this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
             this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
             this.genderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.genderDataGridViewTextBoxColumn.Width = 60;
+            this.genderDataGridViewTextBoxColumn.Width = 65;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
@@ -631,7 +695,7 @@
             this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn.Width = 75;
+            this.phoneDataGridViewTextBoxColumn.Visible = false;
             // 
             // cleanlinessDataGridViewTextBoxColumn
             // 
@@ -639,7 +703,7 @@
             this.cleanlinessDataGridViewTextBoxColumn.HeaderText = "Cleanliness";
             this.cleanlinessDataGridViewTextBoxColumn.Name = "cleanlinessDataGridViewTextBoxColumn";
             this.cleanlinessDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cleanlinessDataGridViewTextBoxColumn.Width = 65;
+            this.cleanlinessDataGridViewTextBoxColumn.Width = 75;
             // 
             // quietnessDataGridViewTextBoxColumn
             // 
@@ -647,7 +711,7 @@
             this.quietnessDataGridViewTextBoxColumn.HeaderText = "Quietness";
             this.quietnessDataGridViewTextBoxColumn.Name = "quietnessDataGridViewTextBoxColumn";
             this.quietnessDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quietnessDataGridViewTextBoxColumn.Width = 65;
+            this.quietnessDataGridViewTextBoxColumn.Width = 75;
             // 
             // studiousnessDataGridViewTextBoxColumn
             // 
@@ -655,7 +719,7 @@
             this.studiousnessDataGridViewTextBoxColumn.HeaderText = "Studiousness";
             this.studiousnessDataGridViewTextBoxColumn.Name = "studiousnessDataGridViewTextBoxColumn";
             this.studiousnessDataGridViewTextBoxColumn.ReadOnly = true;
-            this.studiousnessDataGridViewTextBoxColumn.Width = 75;
+            this.studiousnessDataGridViewTextBoxColumn.Width = 80;
             // 
             // guestsDataGridViewTextBoxColumn
             // 
@@ -671,7 +735,7 @@
             this.gradeDataGridViewTextBoxColumn.HeaderText = "Grade";
             this.gradeDataGridViewTextBoxColumn.Name = "gradeDataGridViewTextBoxColumn";
             this.gradeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gradeDataGridViewTextBoxColumn.Width = 75;
+            this.gradeDataGridViewTextBoxColumn.Width = 60;
             // 
             // majorDataGridViewTextBoxColumn
             // 
@@ -680,13 +744,13 @@
             this.majorDataGridViewTextBoxColumn.Name = "majorDataGridViewTextBoxColumn";
             this.majorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // wakeupDataGridViewTextBoxColumn
+            // Wakeup
             // 
-            this.wakeupDataGridViewTextBoxColumn.DataPropertyName = "Wake-up";
-            this.wakeupDataGridViewTextBoxColumn.HeaderText = "Wake-up";
-            this.wakeupDataGridViewTextBoxColumn.Name = "wakeupDataGridViewTextBoxColumn";
-            this.wakeupDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wakeupDataGridViewTextBoxColumn.Width = 65;
+            this.Wakeup.DataPropertyName = "Wakeup";
+            this.Wakeup.HeaderText = "Wakeup";
+            this.Wakeup.Name = "Wakeup";
+            this.Wakeup.ReadOnly = true;
+            this.Wakeup.Width = 65;
             // 
             // bedtimeDataGridViewTextBoxColumn
             // 
@@ -696,11 +760,21 @@
             this.bedtimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.bedtimeDataGridViewTextBoxColumn.Width = 65;
             // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1342, 467);
+            this.ClientSize = new System.Drawing.Size(1414, 467);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnDescription);
             this.Controls.Add(this.dgvPersonViewer);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.txtPhone);
@@ -747,10 +821,13 @@
             this.strpStatus.ResumeLayout(false);
             this.strpStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonViewer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -811,6 +888,14 @@
         private PeopleDataSet1 peopleDataSet1;
         private System.Windows.Forms.BindingSource informationBindingSource;
         private PeopleDataSet1TableAdapters.InformationTableAdapter informationTableAdapter;
+        private System.Windows.Forms.BindingSource informationBindingSource1;
+        private System.Windows.Forms.Button btnDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wakeupDataGridViewTextBoxColumn;
+        private PeopleDataSet2 peopleDataSet2;
+        private System.Windows.Forms.BindingSource informationBindingSource2;
+        private PeopleDataSet2TableAdapters.InformationTableAdapter informationTableAdapter1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn sSNDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
@@ -821,8 +906,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn guestsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn majorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wakeupDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Wakeup;
         private System.Windows.Forms.DataGridViewTextBoxColumn bedtimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }
 

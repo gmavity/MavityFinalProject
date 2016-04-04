@@ -85,6 +85,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DescriptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DescriptionForm.Designer.cs">
+      <DependentUpon>DescriptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,13 +108,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PeopleDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PeopleDataSet1.cs">
+      <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PeopleDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PeopleDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DescriptionForm.resx">
+      <DependentUpon>DescriptionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +164,17 @@
     </None>
     <None Include="PeopleDataSet1.xss">
       <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet2.xsc">
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PeopleDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PeopleDataSet2.xss">
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
