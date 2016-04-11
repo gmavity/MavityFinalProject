@@ -1057,7 +1057,7 @@ namespace MavityFinalProject.PeopleDataSet1TableAdapters {
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO Information
                          (SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, Bedtime, Description, Wakeup)
-VALUES        (@SSN,@Name,@Gender,@Phone,@Cleanliness,@Quietness,@Studiousness,@Guests,@Grade,@Major,@Bedtime,@Description,@wakeup);   
+VALUES        (@SSN,@Name,@Gender,@Phone,@Cleanliness,@Quietness,@Studiousness,@Guests,@Grade,@Major,@Bedtime,@Description,@wakeup);    
 SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, [Wake-up], Bedtime, Description FROM Information WHERE (SSN = @SSN)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1080,7 +1080,7 @@ SET                SSN = @SSN, Name = @Name, Gender = @Gender, Phone = @Phone, C
                          Guests = @Guests, Grade = @Grade, Major = @Major, Wakeup = @newwakeup, Bedtime = @Bedtime, Description = @Description
 WHERE        (SSN = @Original_SSN) AND (Name = @Original_Name) AND (Gender = @Original_Gender) AND (Phone = @Original_Phone) AND 
                          (Cleanliness = @Original_Cleanliness) AND (Quietness = @Original_Quietness) AND (Studiousness = @Original_Studiousness) AND (Guests = @Original_Guests) 
-                         AND (Grade = @Original_Grade) AND (Major = @Original_Major) AND (Bedtime = @Original_Bedtime) AND (Wakeup = @oldwakeup);     
+                         AND (Grade = @Original_Grade) AND (Major = @Original_Major) AND (Bedtime = @Original_Bedtime) AND (Wakeup = @oldwakeup);      
 SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, [Wake-up], Bedtime, Description FROM Information WHERE (SSN = @SSN)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1120,7 +1120,7 @@ SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, G
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[14];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[15];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Gue" +
@@ -1188,12 +1188,9 @@ SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, G
             this._commandCollection[12].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ssn", global::System.Data.SqlDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[13] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[13].Connection = this.Connection;
-            this._commandCollection[13].CommandText = @"UPDATE       Information
-SET                SSN = @SSN, Name = @Name, Gender = @Gender, Phone = @Phone, Cleanliness = @Cleanliness, Quietness = @Quietness, Studiousness = @Studiousness, 
-                         Guests = @Guests, Grade = @Grade, Major = @Major, Wakeup = @newwakeup, Bedtime = @Bedtime, Description = @Description
-WHERE        (SSN = @Original_SSN) AND (Name = @Original_Name) AND (Gender = @Original_Gender) AND (Phone = @Original_Phone) AND 
-                         (Cleanliness = @Original_Cleanliness) AND (Quietness = @Original_Quietness) AND (Studiousness = @Original_Studiousness) AND (Guests = @Original_Guests) 
-                         AND (Grade = @Original_Grade) AND (Major = @Original_Major) AND (Bedtime = @Original_Bedtime) AND (Wakeup = @oldwakeup);     
+            this._commandCollection[13].CommandText = @"INSERT INTO Information
+                         (SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, Bedtime, Description, Wakeup)
+VALUES        (@SSN,@Name,@Gender,@Phone,@Cleanliness,@Quietness,@Studiousness,@Guests,@Grade,@Major,@Bedtime,@Description,@wakeup);    
 SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, Wakeup, Bedtime, Description FROM Information WHERE (SSN = @SSN)";
             this._commandCollection[13].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1206,21 +1203,44 @@ SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, G
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Guests", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Guests", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Grade", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Grade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Major", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Major", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newwakeup", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Wakeup", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bedtime", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Bedtime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cleanliness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cleanliness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quietness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Quietness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Studiousness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Studiousness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Guests", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Guests", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Grade", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Grade", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Major", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Major", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bedtime", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Bedtime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oldwakeup", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Wakeup", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[13].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wakeup", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Wakeup", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[14].Connection = this.Connection;
+            this._commandCollection[14].CommandText = @"UPDATE       Information
+SET                SSN = @SSN, Name = @Name, Gender = @Gender, Phone = @Phone, Cleanliness = @Cleanliness, Quietness = @Quietness, Studiousness = @Studiousness, 
+                         Guests = @Guests, Grade = @Grade, Major = @Major, Wakeup = @newwakeup, Bedtime = @Bedtime, Description = @Description
+WHERE        (SSN = @Original_SSN) AND (Name = @Original_Name) AND (Gender = @Original_Gender) AND (Phone = @Original_Phone) AND 
+                         (Cleanliness = @Original_Cleanliness) AND (Quietness = @Original_Quietness) AND (Studiousness = @Original_Studiousness) AND (Guests = @Original_Guests) 
+                         AND (Grade = @Original_Grade) AND (Major = @Original_Major) AND (Bedtime = @Original_Bedtime) AND (Wakeup = @oldwakeup);     
+SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, Grade, Major, Wakeup, Bedtime, Description FROM Information WHERE (SSN = @SSN)";
+            this._commandCollection[14].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gender", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cleanliness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cleanliness", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quietness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Quietness", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Studiousness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Studiousness", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Guests", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Guests", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Grade", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Grade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Major", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Major", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@newwakeup", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Wakeup", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Bedtime", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Bedtime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SSN", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SSN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cleanliness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cleanliness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quietness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Quietness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Studiousness", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Studiousness", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Guests", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Guests", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Grade", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Grade", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Major", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Major", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Bedtime", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Bedtime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[14].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@oldwakeup", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Wakeup", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1916,6 +1936,82 @@ SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, G
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int SSN, string Name, string Gender, string Phone, int Cleanliness, int Quietness, int Studiousness, int Guests, string Grade, string Major, string Bedtime, string Description, string wakeup) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[13];
+            command.Parameters[0].Value = ((int)(SSN));
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Name));
+            }
+            if ((Gender == null)) {
+                throw new global::System.ArgumentNullException("Gender");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(Gender));
+            }
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Phone));
+            }
+            command.Parameters[4].Value = ((int)(Cleanliness));
+            command.Parameters[5].Value = ((int)(Quietness));
+            command.Parameters[6].Value = ((int)(Studiousness));
+            command.Parameters[7].Value = ((int)(Guests));
+            if ((Grade == null)) {
+                throw new global::System.ArgumentNullException("Grade");
+            }
+            else {
+                command.Parameters[8].Value = ((string)(Grade));
+            }
+            if ((Major == null)) {
+                throw new global::System.ArgumentNullException("Major");
+            }
+            else {
+                command.Parameters[9].Value = ((string)(Major));
+            }
+            if ((Bedtime == null)) {
+                throw new global::System.ArgumentNullException("Bedtime");
+            }
+            else {
+                command.Parameters[10].Value = ((string)(Bedtime));
+            }
+            if ((Description == null)) {
+                throw new global::System.ArgumentNullException("Description");
+            }
+            else {
+                command.Parameters[11].Value = ((string)(Description));
+            }
+            if ((wakeup == null)) {
+                throw new global::System.ArgumentNullException("wakeup");
+            }
+            else {
+                command.Parameters[12].Value = ((string)(wakeup));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateQuery(
                     int SSN, 
@@ -1943,7 +2039,7 @@ SELECT SSN, Name, Gender, Phone, Cleanliness, Quietness, Studiousness, Guests, G
                     string Original_Major, 
                     string Original_Bedtime, 
                     string oldwakeup) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[13];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[14];
             command.Parameters[0].Value = ((int)(SSN));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");

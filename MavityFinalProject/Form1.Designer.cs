@@ -77,17 +77,6 @@
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.btnHelp = new System.Windows.Forms.Button();
             this.dgvPersonViewer = new System.Windows.Forms.DataGridView();
-            this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet2 = new MavityFinalProject.PeopleDataSet2();
-            this.peopleDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet = new MavityFinalProject.PeopleDataSet();
-            this.btnDescription = new System.Windows.Forms.Button();
-            this.informationTableAdapter1 = new MavityFinalProject.PeopleDataSet2TableAdapters.InformationTableAdapter();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet1 = new MavityFinalProject.PeopleDataSet1();
-            this.informationTableAdapter = new MavityFinalProject.PeopleDataSet1TableAdapters.InformationTableAdapter();
-            this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sSNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,6 +91,17 @@
             this.Wakeup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet2 = new MavityFinalProject.PeopleDataSet2();
+            this.peopleDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet = new MavityFinalProject.PeopleDataSet();
+            this.btnDescription = new System.Windows.Forms.Button();
+            this.informationTableAdapter1 = new MavityFinalProject.PeopleDataSet2TableAdapters.InformationTableAdapter();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet1 = new MavityFinalProject.PeopleDataSet1();
+            this.informationTableAdapter = new MavityFinalProject.PeopleDataSet1TableAdapters.InformationTableAdapter();
+            this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.grpGender.SuspendLayout();
             this.grpWake.SuspendLayout();
             this.grpBed.SuspendLayout();
@@ -547,6 +547,7 @@
             this.btnAssign.TabIndex = 16;
             this.btnAssign.Text = "Choose For Me";
             this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // txtPhone
             // 
@@ -594,69 +595,6 @@
             this.dgvPersonViewer.ReadOnly = true;
             this.dgvPersonViewer.Size = new System.Drawing.Size(796, 396);
             this.dgvPersonViewer.TabIndex = 35;
-            // 
-            // informationBindingSource2
-            // 
-            this.informationBindingSource2.DataMember = "Information";
-            this.informationBindingSource2.DataSource = this.peopleDataSet2;
-            // 
-            // peopleDataSet2
-            // 
-            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
-            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // peopleDataSetBindingSource
-            // 
-            this.peopleDataSetBindingSource.DataSource = this.peopleDataSet;
-            this.peopleDataSetBindingSource.Position = 0;
-            // 
-            // peopleDataSet
-            // 
-            this.peopleDataSet.DataSetName = "PeopleDataSet";
-            this.peopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnDescription
-            // 
-            this.btnDescription.Location = new System.Drawing.Point(1310, 157);
-            this.btnDescription.Name = "btnDescription";
-            this.btnDescription.Size = new System.Drawing.Size(75, 60);
-            this.btnDescription.TabIndex = 36;
-            this.btnDescription.Text = "Get Description";
-            this.btnDescription.UseVisualStyleBackColor = true;
-            this.btnDescription.Click += new System.EventHandler(this.btnDescription_Click);
-            // 
-            // informationTableAdapter1
-            // 
-            this.informationTableAdapter1.ClearBeforeFill = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(147, 378);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(60, 60);
-            this.btnSave.TabIndex = 37;
-            this.btnSave.Text = "Save Changes";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // informationBindingSource
-            // 
-            this.informationBindingSource.DataMember = "Information";
-            this.informationBindingSource.DataSource = this.peopleDataSet1;
-            // 
-            // peopleDataSet1
-            // 
-            this.peopleDataSet1.DataSetName = "PeopleDataSet1";
-            this.peopleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // informationTableAdapter
-            // 
-            this.informationTableAdapter.ClearBeforeFill = true;
-            // 
-            // informationBindingSource1
-            // 
-            this.informationBindingSource1.DataMember = "Information";
-            this.informationBindingSource1.DataSource = this.peopleDataSet1;
             // 
             // Description
             // 
@@ -767,6 +705,69 @@
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // informationBindingSource2
+            // 
+            this.informationBindingSource2.DataMember = "Information";
+            this.informationBindingSource2.DataSource = this.peopleDataSet2;
+            // 
+            // peopleDataSet2
+            // 
+            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
+            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // peopleDataSetBindingSource
+            // 
+            this.peopleDataSetBindingSource.DataSource = this.peopleDataSet;
+            this.peopleDataSetBindingSource.Position = 0;
+            // 
+            // peopleDataSet
+            // 
+            this.peopleDataSet.DataSetName = "PeopleDataSet";
+            this.peopleDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnDescription
+            // 
+            this.btnDescription.Location = new System.Drawing.Point(1310, 157);
+            this.btnDescription.Name = "btnDescription";
+            this.btnDescription.Size = new System.Drawing.Size(75, 60);
+            this.btnDescription.TabIndex = 36;
+            this.btnDescription.Text = "Get Description";
+            this.btnDescription.UseVisualStyleBackColor = true;
+            this.btnDescription.Click += new System.EventHandler(this.btnDescription_Click);
+            // 
+            // informationTableAdapter1
+            // 
+            this.informationTableAdapter1.ClearBeforeFill = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(147, 378);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(60, 60);
+            this.btnSave.TabIndex = 37;
+            this.btnSave.Text = "Save Changes";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // informationBindingSource
+            // 
+            this.informationBindingSource.DataMember = "Information";
+            this.informationBindingSource.DataSource = this.peopleDataSet1;
+            // 
+            // peopleDataSet1
+            // 
+            this.peopleDataSet1.DataSetName = "PeopleDataSet1";
+            this.peopleDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // informationTableAdapter
+            // 
+            this.informationTableAdapter.ClearBeforeFill = true;
+            // 
+            // informationBindingSource1
+            // 
+            this.informationBindingSource1.DataMember = "Information";
+            this.informationBindingSource1.DataSource = this.peopleDataSet1;
             // 
             // MainForm
             // 

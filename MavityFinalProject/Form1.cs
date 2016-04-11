@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 
 namespace MavityFinalProject
 {
@@ -32,10 +31,14 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtSSN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) || txtSSN.Text.Length >= 4)
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar) || txtSSN.Text.Length >= 4 )
+                {
+                    e.Handled = true;
+                }
             }
+
         }
 
         /// <summary>
@@ -45,9 +48,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsLetter(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsLetter(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -58,9 +64,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtClean_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -71,9 +80,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtQuiet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -84,9 +96,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtStudy_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar))
+                {
+
+                }
             }
         }
 
@@ -97,9 +112,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtGuests_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -110,9 +128,12 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtYear_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsLetter(e.KeyChar))
+            if (!Char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                if (!Char.IsLetter(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -173,8 +194,8 @@ namespace MavityFinalProject
                 bedtime = "After 1";
             }
 
-            adapter.Insert(int.Parse(txtSSN.Text), txtName.Text, gender, txtPhone.Text, int.Parse(txtClean.Text), int.Parse(txtQuiet.Text), int.Parse(txtStudy.Text), int.Parse(txtGuests.Text), txtYear.Text, txtMajor.Text, wakeup, bedtime, rtbDescribe.Text);
-            this.informationTableAdapter.Fill(this.peopleDataSet1.Information);
+            adapter.InsertQuery(int.Parse(txtSSN.Text), txtName.Text, gender, txtPhone.Text, int.Parse(txtClean.Text), int.Parse(txtQuiet.Text), int.Parse(txtStudy.Text), int.Parse(txtGuests.Text), txtYear.Text, txtMajor.Text, bedtime, rtbDescribe.Text, wakeup);
+            this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
         }
 
         /// <summary>
@@ -378,6 +399,158 @@ namespace MavityFinalProject
                 adapter.Delete(ssn);
                 this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
             }
+        }
+
+        /// <summary>
+        /// runs through database and tries to find a roommate that is compatible to the selected person, based on a widening range of acceptable values for quietness etc
+        /// </summary>
+        /// <param name="difference"></param>
+        private void AutoSelect(int difference)
+        {
+            int ssn = (int)dgvPersonViewer.Rows[dgvPersonViewer.CurrentCell.RowIndex].Cells[1].Value, potentialssn, iwake, ibed, potentialiwake, potentialibed;
+            string gender = adapter.GetGender(ssn), wakeup = adapter.GetWakeup(ssn), bedtime = adapter.GetBedtime(ssn), potentialwakeup, potentialbedtime;
+            int clean = (int)adapter.GetCleanliness(ssn), study = (int)adapter.GetStudiousness(ssn), quiet = (int)adapter.GetQuietness(ssn), guests = (int)adapter.GetGuests(ssn);
+
+            if (wakeup.Equals("Before 6"))//save wakeup and bedtimes for selected user as integers so they can be compared
+            {
+                iwake = 0;
+            }
+            else if (wakeup.Equals("6-7"))
+            {
+                iwake = 1;
+            }
+            else if (wakeup.Equals("7-8"))
+            {
+                iwake = 2;
+            }
+            else if (wakeup.Equals("8-9"))
+            {
+                iwake = 3;
+            }
+            else
+            {
+                iwake = 4;
+            }
+            if (bedtime.Equals("Before 10"))
+            {
+                ibed = 0;
+            }
+            else if (bedtime.Equals("10-11"))
+            {
+                ibed = 1;
+            }
+            else if (bedtime.Equals("11-12"))
+            {
+                ibed = 2;
+            }
+            else if (bedtime.Equals("12-1"))
+            {
+                ibed = 3;
+            }
+            else
+            {
+                ibed = 4;
+            }
+
+            for (int i = 0; i < dgvPersonViewer.RowCount; i++)
+            {
+                potentialssn = (int)dgvPersonViewer.Rows[i].Cells[1].Value;
+                potentialwakeup = adapter.GetWakeup(potentialssn);
+                potentialbedtime = adapter.GetBedtime(potentialssn);
+                if (potentialwakeup.Equals("Before 6"))//save wakeup and bedtimes for potential user as integers so they can be compared
+                {
+                    potentialiwake = 0;
+                }
+                else if (potentialwakeup.Equals("6-7"))
+                {
+                    potentialiwake = 1;
+                }
+                else if (potentialwakeup.Equals("7-8"))
+                {
+                    potentialiwake = 2;
+                }
+                else if (potentialwakeup.Equals("8-9"))
+                {
+                    potentialiwake = 3;
+                }
+                else
+                {
+                    potentialiwake = 4;
+                }
+                if (potentialbedtime.Equals("Before 10"))
+                {
+                    potentialibed = 0;
+                }
+                else if (potentialbedtime.Equals("10-11"))
+                {
+                    potentialibed = 1;
+                }
+                else if (potentialbedtime.Equals("11-12"))
+                {
+                    potentialibed = 2;
+                }
+                else if (potentialbedtime.Equals("12-1"))
+                {
+                    potentialibed = 3;
+                }
+                else
+                {
+                    potentialibed = 4;
+                }
+
+                if (potentialssn != ssn)
+                {
+                    if (gender.Equals(adapter.GetGender(potentialssn)))
+                    {
+                        if (clean <= adapter.GetCleanliness(potentialssn) + difference || clean >= adapter.GetCleanliness(potentialssn) - difference)
+                        {
+                            if (study <= adapter.GetStudiousness(potentialssn) + difference || study >= adapter.GetStudiousness(potentialssn) - difference)
+                            {
+                                if (quiet <= adapter.GetQuietness(potentialssn) + difference || quiet >= adapter.GetQuietness(potentialssn) - difference)
+                                {
+                                    if (guests <= adapter.GetGuests(potentialssn) + difference || guests >= adapter.GetGuests(potentialssn) - difference)
+                                    {
+                                        if(iwake<=potentialiwake+difference || iwake >= potentialiwake - difference)
+                                        {
+                                            if(ibed<=potentialibed + difference || ibed >= potentialibed - difference)
+                                            {
+                                                dgvPersonViewer.Rows[i].Selected = true;
+                                                dgvPersonViewer.Rows[dgvPersonViewer.CurrentCell.RowIndex].Selected = false;
+                                                return;
+                                            }
+                                        }
+                                       
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (i >= dgvPersonViewer.RowCount - 1)
+                            {
+                                lblStatus.Text = "No compatible roommate found.";
+                                return;
+                            }
+                            else
+                            {
+                                difference++;
+                                AutoSelect(difference);//call method recursively with widened range of acceptable values
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// calls method to select a roommate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAssign_Click(object sender, EventArgs e)
+        {
+            AutoSelect(0);
         }
     }
 }
