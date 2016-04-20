@@ -13,6 +13,8 @@ namespace MavityFinalProject
     public partial class MainForm : Form
     {
         PeopleDataSet1TableAdapters.InformationTableAdapter adapter = new PeopleDataSet1TableAdapters.InformationTableAdapter();
+        Validations valid = new Validations();//keeps track of validating input
+        List<TextBox> boxes = new List<TextBox>();
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +24,29 @@ namespace MavityFinalProject
         {
             // TODO: This line of code loads data into the 'peopleDataSet2.Information' table. You can move, or remove it, as needed.
             this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
+            boxes.Add(txtClean);
+            boxes.Add(txtGuests);
+            boxes.Add(txtMajor);
+            boxes.Add(txtName);
+            boxes.Add(txtQuiet);
+            boxes.Add(txtSSN);
+            boxes.Add(txtStudy);
+            boxes.Add(txtYear);
+        }
+
+        /// <summary>
+        /// clears all text boxes, radio buttons
+        /// </summary>
+        private void ClearForm()
+        {
+            for(int i=0; i<boxes.Count; i++)
+            {
+                boxes[i].Text = "";
+            }
+            txtPhone.Text = "";
+            radF.Checked = true;
+            radBefore10.Checked = true;
+            radBefore6.Checked = true;
         }
 
         /// <summary>
@@ -31,14 +56,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtSSN_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsDigit(e.KeyChar) || txtSSN.Text.Length >= 4 )
-                {
-                    e.Handled = true;
-                }
-            }
-
+            valid.ValidateSSN(e, txtSSN);
         }
 
         /// <summary>
@@ -48,13 +66,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsLetter(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            valid.ValidateName(e);
         }
 
         /// <summary>
@@ -64,13 +76,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtClean_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            valid.ValidateClean(e);
         }
 
         /// <summary>
@@ -80,13 +86,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtQuiet_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            valid.ValidateQuiet(e);
         }
 
         /// <summary>
@@ -96,13 +96,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtStudy_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsDigit(e.KeyChar))
-                {
-
-                }
-            }
+            valid.ValidateStudy(e);
         }
 
         /// <summary>
@@ -112,13 +106,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtGuests_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsDigit(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            valid.ValidateGuests(e);
         }
 
         /// <summary>
@@ -128,13 +116,7 @@ namespace MavityFinalProject
         /// <param name="e"></param>
         private void txtYear_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsControl(e.KeyChar))
-            {
-                if (!Char.IsLetter(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            valid.ValidateYear(e);
         }
 
         /// <summary>
@@ -196,6 +178,7 @@ namespace MavityFinalProject
 
             adapter.InsertQuery(int.Parse(txtSSN.Text), txtName.Text, gender, txtPhone.Text, int.Parse(txtClean.Text), int.Parse(txtQuiet.Text), int.Parse(txtStudy.Text), int.Parse(txtGuests.Text), txtYear.Text, txtMajor.Text, bedtime, rtbDescribe.Text, wakeup);
             this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
+            ClearForm();
         }
 
         /// <summary>
@@ -379,6 +362,7 @@ namespace MavityFinalProject
 
                 adapter.UpdateQuery(ssn, txtName.Text, newgender, txtPhone.Text, int.Parse(txtClean.Text), int.Parse(txtQuiet.Text), int.Parse(txtStudy.Text), int.Parse(txtGuests.Text), txtYear.Text, txtMajor.Text, newwakeup, newbedtime, rtbDescribe.Text, ssn, adapter.GetName(ssn), oldgender, adapter.GetPhone(ssn), (int)adapter.GetCleanliness(ssn), (int)adapter.GetQuietness(ssn), (int)adapter.GetStudiousness(ssn), (int)adapter.GetGuests(ssn), adapter.GetGrade(ssn), adapter.GetMajor(ssn), oldbedtime, oldwakeup);
                 this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
+                ClearForm();
             }
         }
 
@@ -399,6 +383,7 @@ namespace MavityFinalProject
                 adapter.Delete(ssn);
                 this.informationTableAdapter1.Fill(this.peopleDataSet2.Information);
             }
+            ClearForm();
         }
 
         /// <summary>

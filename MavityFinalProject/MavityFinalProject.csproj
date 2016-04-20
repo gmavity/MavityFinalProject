@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations.cs" />
     <EmbeddedResource Include="DescriptionForm.resx">
       <DependentUpon>DescriptionForm.cs</DependentUpon>
     </EmbeddedResource>
